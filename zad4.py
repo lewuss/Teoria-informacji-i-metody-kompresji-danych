@@ -46,16 +46,19 @@ print(sum_of_lengths / non_spaces)
 
 most_prob = [" ", 'e']
 bio_occur = {}
-
+suma = 0
 for i, letter in enumerate(new_text):
     if letter in most_prob and i < len(new_text):
-        bio = letter + new_text[i+1]
+        bio = letter + new_text[i + 1]
         if bio in bio_occur:
             bio_occur[bio] += 1
         else:
             bio_occur[bio] = 0
+        suma +=1
 
-bio_occur = dict(sorted(bio_occur.items(), key=lambda item: item[1], reverse=True))
-
+bio_prob = {}
+for pair, occur in bio_occur.items():
+    bio_prob[pair] = (float(occur)/suma) / probability[pair[0]]
+bio_prob = dict(sorted(bio_prob.items(), key=lambda item: item[1], reverse=True))
 print(bio_occur)
-
+print(bio_prob)
