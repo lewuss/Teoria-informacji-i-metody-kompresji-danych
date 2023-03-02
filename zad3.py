@@ -1,4 +1,5 @@
 import string
+import random
 
 with open('shakespire.txt', 'r', encoding='UTF-8') as f:
     lines = f.readlines()
@@ -27,8 +28,18 @@ occurances = dict(sorted(occurances.items(), key=lambda item: item[1], reverse=T
 probability = {}
 
 for letter, occ in occurances.items():
-    probability[letter]=occ/len(new_text)
+    probability[letter] = occ / len(new_text)
 
 print(probability)
 
+random_string = ''.join(random.choices(list(probability.keys()), weights=list(probability.values()), k=10000))
+sum_of_lengths = 0
+non_spaces = 0
+random_string = random_string.split(" ")
+print(random_string)
+for word in random_string:
+    if word != "":
+        sum_of_lengths += len(word)
+        non_spaces += 1
 
+print(sum_of_lengths / non_spaces)
