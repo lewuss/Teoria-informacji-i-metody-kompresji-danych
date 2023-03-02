@@ -22,7 +22,12 @@ for letter in new_text:
         occurances[letter] = 0
 
 occurances = dict(sorted(occurances.items(), key=lambda item: item[1], reverse=True))
-print(occurances)
 
+probability = {}
+
+for letter, occ in occurances.items():
+    probability[letter]=occ/len(new_text)
+
+print(probability)
 
 
