@@ -20,7 +20,7 @@ def build_markov_chain(text, order=1, delimiter=' '):
     return markov_chain
 
 
-def generate_text(markov_chain, starting_n_gram, text_length=10000, delimiter=' '):
+def generate_text(markov_chain, starting_n_gram, text_length=1000, delimiter=' '):
     current_n_gram = tuple(starting_n_gram.split(delimiter))
     generated_text = list(current_n_gram)
     for _ in range(text_length - len(current_n_gram)):
@@ -41,10 +41,10 @@ with open("norm_wiki_sample.txt", 'r', encoding="UTF-8") as f:
     text = f.readlines()[0]
 
 markov_chain = build_markov_chain(text)
-new_text = generate_text(markov_chain, random.choice(text))
+new_text = generate_text(markov_chain, 'the')
 
 markov_chain_2 = build_markov_chain(text, order=3)
-new_text_2 = generate_text(markov_chain_2, random.choice(text) + random.choice(text) + random.choice(text))
+new_text_2 = generate_text(markov_chain_2, 'the best way')
 
 markov_chain_3 = build_markov_chain(text, order=5)
 new_text_3 = generate_text(markov_chain_3, 'the probability of passing the')
@@ -54,14 +54,14 @@ print(new_text_3)
 
 
 def count_avg_length(text):
-    length = len(text)
+    length = len(text.split())
     sum_length = 0
     for word in text:
         sum_length += len(word)
 
     return sum_length / length
 
-print(count_avg_length('chuj w dupiie towjjej'))
+
 print("Średnia długość wyrazu w przybliżeniu markova 1 rzędu to ", count_avg_length(new_text))
 print("Średnia długość wyrazu w przybliżeniu markova 3 rzędu to ", count_avg_length(new_text_2))
 print("Średnia długość wyrazu w przybliżeniu markova 5 rzędu to ", count_avg_length(new_text_3))
