@@ -19,8 +19,13 @@ def build_markov_chain(text, order=1):
     return markov_chain
 
 
+<<<<<<< HEAD
 def generate_text(markov_chain, starting_n_gram, text_length=1000):
     current_n_gram = tuple(starting_n_gram)
+=======
+def generate_text(markov_chain, starting_n_gram, text_length=1000, delimiter=' '):
+    current_n_gram = tuple(starting_n_gram.split(delimiter))
+>>>>>>> 9b2bd7294a714e6ea2a454b7101145c54c690161
     generated_text = list(current_n_gram)
     for _ in range(text_length - len(current_n_gram)):
         if current_n_gram not in markov_chain:
@@ -42,10 +47,17 @@ with open('shakespire.txt', 'r', encoding='UTF-8') as f:
 text = "".join(lines)
 
 markov_chain = build_markov_chain(text)
+<<<<<<< HEAD
 new_text = generate_text(markov_chain, 'e')
 
 markov_chain_2 = build_markov_chain(text, order=3)
 new_text_2 = generate_text(markov_chain_2, 'the')
+=======
+new_text = generate_text(markov_chain, 'the')
+
+markov_chain_2 = build_markov_chain(text, order=3)
+new_text_2 = generate_text(markov_chain_2, 'the best way')
+>>>>>>> 9b2bd7294a714e6ea2a454b7101145c54c690161
 
 markov_chain_3 = build_markov_chain(text, order=5)
 new_text_3 = generate_text(markov_chain_3, 'proba')
@@ -55,14 +67,22 @@ print(new_text_3)
 
 
 def count_avg_length(text):
+<<<<<<< HEAD
     text = text.split(" ")
     length = len(text)
+=======
+    length = len(text.split())
+>>>>>>> 9b2bd7294a714e6ea2a454b7101145c54c690161
     sum_length = 0
     for word in text:
         sum_length += len(word)
 
     return sum_length / length
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9b2bd7294a714e6ea2a454b7101145c54c690161
 print("Średnia długość wyrazu w przybliżeniu markova 1 rzędu to ", count_avg_length(new_text))
 print("Średnia długość wyrazu w przybliżeniu markova 3 rzędu to ", count_avg_length(new_text_2))
 print("Średnia długość wyrazu w przybliżeniu markova 5 rzędu to ", count_avg_length(new_text_3))
