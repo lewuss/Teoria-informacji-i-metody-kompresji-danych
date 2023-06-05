@@ -37,7 +37,7 @@ def generate_text(markov_chain, starting_n_gram, text_length=10000, delimiter=' 
     return delimiter.join(generated_text)
 
 
-with open("norm_wiki_sample.txt", 'r', encoding="UTF-8") as f:
+with open("../lab6/norm_wiki_sample.txt", 'r', encoding="UTF-8") as f:
     text = f.readlines()[0]
 
 markov_chain = build_markov_chain(text)

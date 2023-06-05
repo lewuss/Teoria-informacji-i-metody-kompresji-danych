@@ -1,5 +1,5 @@
 words = []
-with open("norm_wiki_sample.txt", 'r', encoding="UTF-8") as f:
+with open("../lab6/norm_wiki_sample.txt", 'r', encoding="UTF-8") as f:
     words = f.readlines()[0]
 
 words = words.split()
